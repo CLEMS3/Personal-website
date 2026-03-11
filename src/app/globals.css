@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #050a14;
+  --color-foreground: #f8fafc;
+  
+  --color-card: rgba(15, 23, 42, 0.6);
+  --color-card-foreground: #f8fafc;
+  --color-card-border: rgba(30, 41, 59, 0.5);
+
+  --color-border: rgba(30, 41, 59, 0.7);
+  --color-input: rgba(15, 23, 42, 0.5);
+  --color-ring: rgba(14, 165, 233, 0.5);
+
+  --color-primary: #0ea5e9;
+  --color-primary-foreground: #ffffff;
+  --color-primary-glow: rgba(14, 165, 233, 0.6);
+
+  --color-secondary: #1e293b;
+  --color-secondary-foreground: #f8fafc;
+
+  --color-accent: #10b981;
+  --color-accent-foreground: #022c22;
+  --color-accent-glow: rgba(16, 185, 129, 0.5);
+
+  --background-image-grid-pattern: linear-gradient(to right, #1f2937 1px, transparent 1px), linear-gradient(to bottom, #1f2937 1px, transparent 1px);
+  --background-image-grid-pattern-light: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-matrix-rain: matrix-rain 20s linear infinite;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+  @keyframes matrix-rain {
+    from { background-position: 0% 0%; }
+    to { background-position: 0% 100%; }
+  }
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image: radial-gradient(circle at 50% -20%, rgba(14, 165, 233, 0.15), rgba(5, 10, 20, 1) 40%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  
+  ::selection {
+    background-color: rgba(14, 165, 233, 0.3);
+    color: white;
+  }
+}
+
+/* Glassmorphism utilities */
+@layer utilities {
+  .glass {
+    background-color: var(--color-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-card-border);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+  }
+  
+  .glass-panel {
+    background-color: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px var(--color-primary-glow), 0 0 20px var(--color-primary-glow);
+  }
+
+  .neon-text-accent {
+    text-shadow: 0 0 10px var(--color-accent-glow), 0 0 20px var(--color-accent-glow);
+  }
+}
